@@ -20,13 +20,13 @@ const Modal = ({ add, clk, aff }) => {
   useEffect(() => bsCustomFileInput.init());
   return (
     <>
-      {clk && aff && (
+      {clk && (
         <div
           className="form"
-          onBlur={() => {
-            setLabel(false);
-            aff(false);
-          }}
+          // onBlur={() => {
+          //   setLabel(false);
+          //   aff(false);
+          // }}
         >
           <div>
             <label htmlFor="name">Movie name</label>
@@ -115,6 +115,7 @@ const Modal = ({ add, clk, aff }) => {
               </label>
             </div>
           </div>
+          <div>
           <button
             onClick={() => {
               if (name && genre && date && rating && img.length != 0) {
@@ -138,6 +139,12 @@ const Modal = ({ add, clk, aff }) => {
           >
             ADD
           </button>
+          <button onClick={()=>{
+            setLabel(false);
+            aff(false);
+          }}
+          >Cancel</button>
+          </div>
           <br />
           {label && <label>Please enter a valid information</label>}
         </div>

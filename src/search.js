@@ -5,7 +5,6 @@ import StarRatingComponent from "react-star-rating-component";
 const Search = ({ srch, btn, cond }) => {
   const [inp, setInp] = useState("");
   const [star, setStar] = useState(0);
-  const [clkbtn, setClkbtn] = useState(false);
   const [blur, setBlur] = useState(cond);
   let fil = srch.filter((e) =>
     e.name.toLowerCase().includes(inp.toLowerCase())
@@ -17,14 +16,7 @@ const Search = ({ srch, btn, cond }) => {
   return (
     <>
       <div className="div2">
-        <button
-          title="Add new movie"
-          id="btn"
-          onClick={() => {
-            setClkbtn(true);
-            btn(true);
-          }}
-        >
+        <button title="Add new movie" id="btn" onClick={() => btn(true)}>
           <i className="fas fa-plus-square"></i>
         </button>
         <div className="div4">
@@ -61,11 +53,18 @@ const Search = ({ srch, btn, cond }) => {
             value={star}
           />
         </div>
+        <button
+          onClick={() => (window.location.href = window.location.href)}
+          title="Refresh page"
+          id="btn"
+        >
+          <i class="fas fa-home"></i>
+        </button>
       </div>
       <div
         className="App"
         style={{
-          filter: clkbtn && blur && "blur(8px)",
+          filter: blur && "blur(8px)",
         }}
       >
         {fil.length != 0 ? (
